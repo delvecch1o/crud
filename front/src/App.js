@@ -3,6 +3,9 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import axios from 'axios';
 
 import Home from './components/layouts/Home';
+import ConversorMoeda from './components/layouts/ConversorMoeda';
+import ConversorNumerosRomanos from './components/layouts/ConversorNumerosRomanos';
+import ConversorTemperatura from './components/layouts/ConversorTemperatura';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import { Redirect } from 'react-router-dom';
@@ -26,6 +29,9 @@ function App() {
         <Switch>
 
           <Route exact path="/" component={Home} />
+          <Route exact path="/temperatura" component={ConversorTemperatura} />
+          <Route exact path="/moeda" component={ConversorMoeda} />
+          <Route exact path="/romano" component={ConversorNumerosRomanos} />
           
           <Route path="/login">
             {localStorage.getItem('auth_token') ? <Redirect to='/' /> : <Login />}
