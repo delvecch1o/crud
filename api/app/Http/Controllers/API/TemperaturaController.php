@@ -15,6 +15,8 @@ public function temperatura(Request $request)
     $validator = Validator::make($request->all(),[
         'celsius'=> 'nullable',
         'fahrenheit'=> 'nullable',
+        'kelvin' => 'nullable',
+        
         
     ]);
 
@@ -28,29 +30,55 @@ public function temperatura(Request $request)
     }
 
     $temperatura = new Temperatura; 
+    $kelvin = $request->input('kelvin');
     $celsius = $request->input('celsius');
     $fahrenheit = $request->input('fahrenheit');
+   
     
     if($celsius !== null) {
         
         $fahrenheit = ($celsius * 9)/5 + 32;
+        $kelvin = ($celsius + 273.15);
         $temperatura->fahrenheit = $fahrenheit;
+        $temperatura->kelvin = $kelvin;
         $temperatura->celsius = $celsius;
         $temperatura->save();
         return response()->json([
-            'fahrenheit'=>$fahrenheit
+            'fahrenheit'=>$fahrenheit,
+            'kelvin'=>$kelvin,
         ]);
     }
     else if($fahrenheit !== null) {
     
         $celsius = ($fahrenheit - 32) * 5/9 ;
+        $kelvin = (($fahrenheit - 32) * 5/9) + 273.15;
         $temperatura->celsius = $celsius;
         $temperatura->fahrenheit = $fahrenheit;
+        $temperatura->kelvin = $kelvin;
         $temperatura->save();
         return response()->json([
-            'celsius'=>$celsius
+            'celsius'=>$celsius,
+            'kelvin'=>$kelvin,
         ]);
     }
+
+    else if($kelvin !== null) {
+
+        $celsius = ($kelvin - 273.15);
+        $fahrenheit = (($kelvin - 273.15) * 9/5) + 32;
+        $temperatura->celsius = $celsius;
+        $temperatura->fahrenheit = $fahrenheit;
+        $temperatura->kelvin = $kelvin;
+        $temperatura->save();
+        return response()->json([
+            'celsius'=>$celsius,
+            'fahrenheit'=>$fahrenheit,
+        ]);
+
+
+    }
+    
+
     
 }
 }

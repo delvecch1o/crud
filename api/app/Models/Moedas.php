@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Temperatura extends Model
+class Moedas extends Model
 {
     use HasFactory;
-    protected $table = 'temperatura';
+    protected $table = 'moedas';
     protected $fillable = [
-        'celsius',
-        'fahrenheit',
-        'kelvin',
+        'in',
+        'from',
+        'to',
+        'result',
 
     ];
 }
