@@ -10,9 +10,10 @@ class Temperatura extends Model
     use HasFactory;
     protected $table = 'temperatura';
     protected $fillable = [
-        'celsius',
-        'fahrenheit',
-        'kelvin',
+        'in',
+        'from',
+        'to',
+        'result',
 
     ];
 }

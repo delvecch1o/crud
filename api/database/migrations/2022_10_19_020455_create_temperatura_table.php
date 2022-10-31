@@ -15,8 +15,10 @@ class CreateTemperaturaTable extends Migration
     {
         Schema::create('temperatura', function (Blueprint $table) {
             $table->id();
-            $table->string('celsius');
-            $table->string('fahrenheit');
+            $table->float('in');
+            $table->string('from');
+            $table->string('to');
+            $table->float('result');
             $table->timestamps();
         });
     }

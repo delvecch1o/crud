@@ -12,7 +12,7 @@ function Home() {
 
             <ListItem><Anchor href="/temperatura">Conversão de Temperatura</Anchor></ListItem>
             <ListItem><Anchor href="/moeda">Conversor de Moedas</Anchor></ListItem>
-            <ListItem><Anchor href="/romano">Conversão de números romanos</Anchor></ListItem>
+            <ListItem><Anchor href="/romanos">Conversão de números romanos</Anchor></ListItem>
 
         </div>
 

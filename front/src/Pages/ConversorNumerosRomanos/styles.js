@@ -1,5 +1,14 @@
 import styled from 'styled-components'
 
+export const Select = styled.select`
+    margin-left: .5rem;
+    border:1px solid #333;
+    border-radius: .3em;
+    padding: .25rem;
+    width: 6.5em;
+    
+`
+
 export const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -52,13 +61,4 @@ export const Input = styled.input`
   background: papayawhip;
   border: none;
   border-radius: 3px;
-`
-
-export const Select = styled.select`
-    margin-left: .5rem;
-    border:1px solid #333;
-    border-radius: .3em;
-    padding: .25rem;
-    width: 6.5em;
-    
 `

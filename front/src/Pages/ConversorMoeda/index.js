@@ -54,7 +54,7 @@ function ConversorMoeda(props) {
 
         <Container>
             <Form onSubmit={converterMoeda}>
-                <h1>Conversão de Moedas</h1>
+                <h1>Conversor de Moedas</h1>
                 <Input
                     name='in'
                     placeholder='Digite o valor para a conversão'

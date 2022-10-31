@@ -12,73 +12,99 @@ class TemperaturaController extends Controller
 
 public function temperatura(Request $request)
 {
-    $validator = Validator::make($request->all(),[
-        'celsius'=> 'nullable',
-        'fahrenheit'=> 'nullable',
-        'kelvin' => 'nullable',
-        
+$validator = Validator::make($request->all(),[
+    'in'=> 'nullable',
+    'from' => 'nullable',
+    'to' => 'nullable',
+    
+]);
+
+if($validator->fails())
+{
+    return response()->json([
+        'status'=>400,
+        'errors'=>$validator->messages(),
         
     ]);
+}
 
-    if($validator->fails())
-    {
-        return response()->json([
-            'status'=>400,
-            'errors'=>$validator->messages(),
-            
-        ]);
-    }
+$temperatura = new Temperatura;
+$in = $request->input('in');
+$from = $request->input('from');
+$to = $request->input('to');
 
-    $temperatura = new Temperatura; 
-    $kelvin = $request->input('kelvin');
-    $celsius = $request->input('celsius');
-    $fahrenheit = $request->input('fahrenheit');
-   
+
+if($from == 'celsius' && $to == 'fahrenheit') {
     
-    if($celsius !== null) {
-        
-        $fahrenheit = ($celsius * 9)/5 + 32;
-        $kelvin = ($celsius + 273.15);
-        $temperatura->fahrenheit = $fahrenheit;
-        $temperatura->kelvin = $kelvin;
-        $temperatura->celsius = $celsius;
-        $temperatura->save();
-        return response()->json([
-            'fahrenheit'=>$fahrenheit,
-            'kelvin'=>$kelvin,
-        ]);
-    }
-    else if($fahrenheit !== null) {
+    $result = ($in * 9) /5 + 32;
+    $temperatura->in = $in;
+    $temperatura->from = $from;
+    $temperatura->to = $to;
+    $temperatura->result = $result; 
+    $temperatura->save();
+    return response()->json(["result" => $result]);
+}
+
+else if($from == 'fahrenheit' && $to == 'celsius') {
+
+    $result = (($in - 32) * 5/9);
+    $temperatura->in = $in;
+    $temperatura->from = $from;
+    $temperatura->to = $to;
+    $temperatura->result = $result; 
+    $temperatura->save();
+    return response()->json(["result" => $result]);
     
-        $celsius = ($fahrenheit - 32) * 5/9 ;
-        $kelvin = (($fahrenheit - 32) * 5/9) + 273.15;
-        $temperatura->celsius = $celsius;
-        $temperatura->fahrenheit = $fahrenheit;
-        $temperatura->kelvin = $kelvin;
-        $temperatura->save();
-        return response()->json([
-            'celsius'=>$celsius,
-            'kelvin'=>$kelvin,
-        ]);
-    }
+}
 
-    else if($kelvin !== null) {
+else if($from == 'celsius' && $to == 'kelvin' ) {
 
-        $celsius = ($kelvin - 273.15);
-        $fahrenheit = (($kelvin - 273.15) * 9/5) + 32;
-        $temperatura->celsius = $celsius;
-        $temperatura->fahrenheit = $fahrenheit;
-        $temperatura->kelvin = $kelvin;
-        $temperatura->save();
-        return response()->json([
-            'celsius'=>$celsius,
-            'fahrenheit'=>$fahrenheit,
-        ]);
+    $result = ($in + 273.15); 
+    $temperatura->in = $in;
+    $temperatura->from = $from;
+    $temperatura->to = $to;
+    $temperatura->result = $result; 
+    $temperatura->save();
+    return response()->json(["result" => $result]);
 
+}
 
-    }
+else if($from == 'kelvin' && $to == 'celsius') {
+
+     $result = ($in - 273.15) ;
+     $temperatura->in = $in;
+     $temperatura->from = $from;
+     $temperatura->to = $to;
+     $temperatura->result = $result; 
+     $temperatura->save();
+     return response()->json(["result" => $result]);
+     
+ }
+
+else if($from == 'kelvin' && $to == 'fahrenheit') {
+
+    $result = (($in - 273.15) * 9/5) + 32;
+    $temperatura->in = $in;
+    $temperatura->from = $from;
+    $temperatura->to = $to;
+    $temperatura->result = $result; 
+    $temperatura->save();
+    return response()->json(["result" => $result]);
     
+}
 
-    
+else if($from == 'fahrenheit' && $to == 'kelvin') {
+
+     $result = (($in - 32) * 5/9) + 273.15;
+     $temperatura->in = $in;
+     $temperatura->from = $from;
+     $temperatura->to = $to;
+     $temperatura->result = $result; 
+     $temperatura->save();
+     return response()->json(["result" => $result]);
+     
+ }
+
+
 }
 }

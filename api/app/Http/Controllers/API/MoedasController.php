@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client as HttpClient;
 use App\Models\Moedas;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 
 class MoedasController extends Controller
@@ -31,12 +32,20 @@ class MoedasController extends Controller
         ->getBody()->getContents());
         $result = $data[0]->bid * $in;
         
-        $moedas = new Moedas;
-        $moedas->in = $in;
-        $moedas->from = $from;
-        $moedas->to = $to;
-        $moedas->result = $result;
-        $moedas->save();
+     //   $moedas = new Moedas;
+      //  $moedas->in = $in;
+     //   $moedas->from = $from;
+      //  $moedas->to = $to;
+      //  $moedas->result = $result;
+     //   $moedas->save();
+
+        $user = Auth::user();
+        $user->moedas()->create([
+            'in' => $in,
+            'from' => $from,
+            'to' => $to,
+            'result' => $result,
+        ]);
         return response()->json(["result"=> $result]);
 
     }

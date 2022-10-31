@@ -7,8 +7,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 import Login from '../Pages/Login/index'
 import Cadastro from '../Pages/Cadastro/index'
 import  ConversorTemperatura from '../Pages/ConversorTemperatura/index'
-import ConversorMoeda from '../Pages/ConversorMoeda/index';
+import ConversorMoeda from '../Pages/ConversorMoeda/index'
 import Home from '../Pages/Home/index'
+import conversorNumerosRomanos from '../Pages/ConversorNumerosRomanos/index'
+
 
 
 
@@ -33,6 +35,8 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/temperatura" component= {ConversorTemperatura} />
         <Route exact path="/moeda" component= {ConversorMoeda} />
+        <Route exact path="/romanos" component= {conversorNumerosRomanos} />
+        
 
         <Route path="/login">
             {localStorage.getItem('auth_token') ? <Redirect to='/' /> : <Login />}
