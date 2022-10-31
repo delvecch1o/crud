@@ -16,4 +16,7 @@ class Temperatura extends Model
         'result',
 
     ];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -10,7 +10,7 @@ use App\Http\Controllers\API\RomanosController;
 Route::post('/user', [CadastrarController::class, 'register']);
 Route::post('login', [CadastrarController::class, 'login']);
 
-Route::post('temperatura', [TemperaturaController::class, 'temperatura']);
+// Route::post('temperatura', [TemperaturaController::class, 'temperatura']);
 
 Route::post('romanos', [RomanosController::class, 'romanos']);
 
@@ -20,6 +20,7 @@ Route::middleware(['auth:sanctum'])->group(function (){
    
     Route::post('logout', [CadastrarController::class, 'logout']);
     Route::post('moedas', [MoedasController::class, 'moedas']);
+    Route::post('temperatura', [TemperaturaController::class, 'temperatura']);
 
 });
 

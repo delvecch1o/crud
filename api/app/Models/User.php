@@ -45,4 +45,8 @@ class User extends Authenticatable
     public function moedas(){
         return $this->hasMany(Moedas::class);
     }
+
+    public function temperatura(){
+        return $this->hasMany(Temperatura::class);
+    }
 }
