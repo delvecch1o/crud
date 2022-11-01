@@ -1,15 +1,16 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 
 import Login from '../Pages/Login/index'
 import Cadastro from '../Pages/Cadastro/index'
-import  ConversorTemperatura from '../Pages/ConversorTemperatura/index'
+import ConversorTemperatura from '../Pages/ConversorTemperatura/index'
 import ConversorMoeda from '../Pages/ConversorMoeda/index'
 import Home from '../Pages/Home/index'
 import conversorNumerosRomanos from '../Pages/ConversorNumerosRomanos/index'
+import RoutesPrivate from './RoutesPrivate';
 
 
 
@@ -26,18 +27,26 @@ axios.interceptors.request.use(function (config) {
   return config;
 });
 
+
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
         
-        <Route exact path="/" component={Home} />
-        <Route exact path="/temperatura" component= {ConversorTemperatura} />
-        <Route exact path="/moeda" component= {ConversorMoeda} />
-        <Route exact path="/romanos" component= {conversorNumerosRomanos} />
+        <RoutesPrivate exact path="/" render={Home} /> 
+        <RoutesPrivate exact path="/moeda" render={ConversorMoeda} /> 
+        <RoutesPrivate exact path="/temperatura" render={ConversorTemperatura} /> 
+        <RoutesPrivate exact path="/romanos" render={conversorNumerosRomanos} /> 
+        <Route path="*" component={Login} />
         
 
+       {/* <Route exact path="/" component={Home} />
+           <Route exact path="/temperatura" component= {ConversorTemperatura} />
+           <Route exact path="/moeda" component= {ConversorMoeda} />
+           <Route exact path="/romanos" component= {conversorNumerosRomanos} /> */}
+
+        
         <Route path="/login">
             {localStorage.getItem('auth_token') ? <Redirect to='/' /> : <Login />}
           </Route>
