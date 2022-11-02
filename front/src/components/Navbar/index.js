@@ -56,7 +56,7 @@ function Navbar() {
 
                 <UlList>
                     <ListItem><Anchor href="/">Home</Anchor></ListItem>
-                    <ListItem><Anchor href="/about">About</Anchor></ListItem>
+                    <ListItem><Anchor href="/registros">Registros</Anchor></ListItem>
                     <ListItem><Anchor href="/contact">Contact</Anchor></ListItem>
 
                     {AuthButtons}

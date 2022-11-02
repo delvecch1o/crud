@@ -10,6 +10,7 @@ import ConversorTemperatura from '../Pages/ConversorTemperatura/index'
 import ConversorMoeda from '../Pages/ConversorMoeda/index'
 import Home from '../Pages/Home/index'
 import conversorNumerosRomanos from '../Pages/ConversorNumerosRomanos/index'
+import Registros from '../Pages/Registros';
 import RoutesPrivate from './RoutesPrivate';
 
 
@@ -38,6 +39,7 @@ function App() {
         <RoutesPrivate exact path="/moeda" render={ConversorMoeda} /> 
         <RoutesPrivate exact path="/temperatura" render={ConversorTemperatura} /> 
         <RoutesPrivate exact path="/romanos" render={conversorNumerosRomanos} /> 
+        <RoutesPrivate exact path="/registros" render={Registros} /> 
         <Route path="*" component={Login} />
         
 

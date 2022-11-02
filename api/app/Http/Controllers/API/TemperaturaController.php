@@ -46,7 +46,7 @@ if($from == 'celsius' && $to == 'fahrenheit') {
     $temperatura->save();
     */
     $user = Auth::user();
-    $user->temperatura()->create([
+    $user->temperaturas()->create([
         'in' => $in,
         'from' => $from,
         'to' => $to,
@@ -66,7 +66,7 @@ else if($from == 'fahrenheit' && $to == 'celsius') {
     $temperatura->save();
     */
     $user = Auth::user();
-    $user->temperatura()->create([
+    $user->temperaturas()->create([
         'in' => $in,
         'from' => $from,
         'to' => $to,
@@ -87,7 +87,7 @@ else if($from == 'celsius' && $to == 'kelvin' ) {
     $temperatura->save();
     */
     $user = Auth::user();
-    $user->temperatura()->create([
+    $user->temperaturas()->create([
         'in' => $in,
         'from' => $from,
         'to' => $to,
@@ -108,7 +108,7 @@ else if($from == 'kelvin' && $to == 'celsius') {
      $temperatura->save();
      */
     $user = Auth::user();
-    $user->temperatura()->create([
+    $user->temperaturas()->create([
         'in' => $in,
         'from' => $from,
         'to' => $to,
@@ -129,7 +129,7 @@ else if($from == 'kelvin' && $to == 'fahrenheit') {
     $temperatura->save();
     */
     $user = Auth::user();
-    $user->temperatura()->create([
+    $user->temperaturas()->create([
         'in' => $in,
         'from' => $from,
         'to' => $to,
@@ -150,7 +150,7 @@ else if($from == 'fahrenheit' && $to == 'kelvin') {
      $temperatura->save();
      */
     $user = Auth::user();
-    $user->temperatura()->create([
+    $user->temperaturas()->create([
         'in' => $in,
         'from' => $from,
         'to' => $to,
